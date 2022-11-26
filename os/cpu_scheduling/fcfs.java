@@ -1,12 +1,17 @@
 public class fcfs {
 
     public static void print_output(int n, int process[], int burst_time[], int wait_time[], int tat[]) {
-        System.out.println("Process\t\t Burst Time\t Wait Time\t Turn Around Time");
+        System.out.println("\nProcess\t\t Burst Time\t Wait Time\t Turn Around Time");
+        double avg_wt = 0, avg_tat = 0, deci = 100.0;
         for (int i = 0; i < n; i++) {
+            avg_wt += wait_time[i];
+            avg_tat += tat[i];
             System.out.print(
                     process[i] + "\t\t     " + burst_time[i] + "\t\t     " + wait_time[i] + "\t\t     " + tat[i]);
-            System.out.println();
+            System.out.println("\n");
         }
+        System.out.println("Average Wait Time: " + Math.round((avg_wt / n) * deci) / deci);
+        System.out.println("Average Turn Around Time: " + Math.round((avg_tat / n) * deci) / deci + "\n");
     }
 
     public static int[] calc_tat(int n, int burst_time[], int wait_time[]) {
