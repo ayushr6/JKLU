@@ -38,6 +38,19 @@ public class fcfs {
         int n = process.length;
         int burst_time[] = { 10, 5, 8 };
 
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(process[j]<process[i]){
+                    int temp = process[j];
+                    process[j] = process[i];
+                    process[i] = temp;
+                    temp = burst_time[j];
+                    burst_time[j] = burst_time[i];
+                    burst_time[i] = temp;
+                }
+            }
+        }
+
         int wait_time[] = calc_wait_time(n, burst_time);
         int tat[] = calc_tat(n, burst_time, wait_time);
 
